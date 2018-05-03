@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+export {
+  getAPI,
+  postAPI,
+  putAPI,
+  deleteAPI
+} ;
+
 async function getAPI(url, params = {}) {
   console.log(url);
   try {
@@ -43,10 +50,3 @@ async function deleteAPI(url, payload = {}, params = {}) {
     console.log('err in apiHelper: ', err);
   }
 }
-
-export {
-  getAPI,
-  postAPI,
-  putAPI,
-  deleteAPI
-} ;
