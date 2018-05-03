@@ -9,7 +9,14 @@ export {
   getBusinessById,
   updateBusiness,
   deleteBusiness,
-  getClientsAssociatedToBusiness
+  getClientsAssociatedToBusiness,
+  createClient,
+  getClients,
+  getClientById,
+  updateClient,
+  deleteClient,
+  addClientToBusiness,
+  deleteClientFromBusiness
 } ;
 
 
@@ -67,6 +74,71 @@ async function getClientsAssociatedToBusiness(businessId, params) {
   }
 }
 
+
+async function createClient(payload, params) {
+  try {
+    return await postAPI(`${baseUrl}/client`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function getClients(params) {
+  try {
+    return await getAPI(`${baseUrl}/client`, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function getClientById(clientId, params) {
+  try {
+    return await getAPI(`${baseUrl}/client/${clientId}`, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function updateClient(clientId, payload, params) {
+  try {
+    return await putAPI(`${baseUrl}/client/${clientId}`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function deleteClient(clientId, payload, params) {
+  try {
+    return await deleteAPI(`${baseUrl}/client/${clientId}`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+
+async function addClientToBusiness(clientId, businessId, payload, params) {
+  try {
+    return await postAPI(`${baseUrl}/client/${clientId}/addToBusiness/${businessId}`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+
+async function deleteClientFromBusiness(clientId, businessId, payload, params) {
+  try {
+    return await deleteAPI(`${baseUrl}/client/${clientId}/deleteFromBusiness/${businessId}`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
 
 //
 // //exporting a function
