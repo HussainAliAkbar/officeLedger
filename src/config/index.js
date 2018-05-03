@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: 'http://172.16.7.123',
+  baseUrl: 'http://172.16.0.141',
   port: 3000
 };
 

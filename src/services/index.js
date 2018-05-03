@@ -16,7 +16,12 @@ export {
   updateClient,
   deleteClient,
   addClientToBusiness,
-  deleteClientFromBusiness
+  deleteClientFromBusiness,
+  createTransaction,
+  getAllBusinessTransactions,
+  getTransactionById,
+  settleTransaction,
+  deleteTransaction
 } ;
 
 
@@ -139,6 +144,52 @@ async function deleteClientFromBusiness(clientId, businessId, payload, params) {
     console.log(e);
   }
 }
+
+async function createTransaction(payload, params) {
+  try {
+    return await postAPI(`${baseUrl}/transaction`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function getAllBusinessTransactions(businessId, params) {
+  try {
+    return await getAPI(`${baseUrl}/transaction/business/${businessId}`, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function getTransactionById(transactionId, params) {
+  try {
+    return await getAPI(`${baseUrl}/transaction/${transactionId}`, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function settleTransaction(transactionId, payload, params) {
+  try {
+    return await putAPI(`${baseUrl}/transaction/${transactionId}`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+async function deleteTransaction(transactionId, payload, params) {
+  try {
+    return await deleteAPI(`${baseUrl}/transaction/${transactionId}`, payload, params);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
 
 //
 // //exporting a function
