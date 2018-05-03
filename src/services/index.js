@@ -1,24 +1,35 @@
-import {request} from '../helpers/apiHelper';
+import {  getAPI, postAPI, putAPI, deleteAPI} from '../helpers/apiHelper';
 import config from '../config';
-import Router from "../Router";
 
 const baseUrl = `${config.baseUrl}:${config.port}/api`;
 
+export {
+  getBusinesses
+} ;
 
 
-function squareNumber(x) {
-  return Promise.resolve('yayyyy');
-}
-
-async function getBusinesses() {
+async function createBusiness(payload, params) {
   try {
-    let response = await request(`${baseUrl}/business`);
+
+    let response = await getAPI(`${baseUrl}/business`, params);
     return response;
   }
   catch (e) {
     console.log(e);
   }
 }
+
+async function getBusinesses() {
+  try {
+    let params = {pageSize: 10, skip: 10};
+    let response = await getAPI(`${baseUrl}/business`, params || {});
+    return response;
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
 //
 // //exporting a function
 // export function squareNumber(x) {
@@ -26,5 +37,9 @@ async function getBusinesses() {
 // }
 
 //exporting a variable
-var pi = 3.14;
-export {squareNumber, pi, getBusinesses} ;
+// var pi = 3.14;
+//
+// function squareNumber(x) {
+//   return Promise.resolve('yayyyy');
+// }
+// export {squareNumber, pi, };
